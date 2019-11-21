@@ -147,6 +147,7 @@
             this.txtSoPhong.Location = new System.Drawing.Point(543, 41);
             this.txtSoPhong.Margin = new System.Windows.Forms.Padding(2);
             this.txtSoPhong.Name = "txtSoPhong";
+            this.txtSoPhong.ReadOnly = true;
             this.txtSoPhong.Size = new System.Drawing.Size(192, 20);
             this.txtSoPhong.TabIndex = 34;
             this.txtSoPhong.Text = " ";
@@ -348,7 +349,9 @@
             // 
             // cbxHoten
             // 
+            this.cbxHoten.DropDownHeight = 65;
             this.cbxHoten.FormattingEnabled = true;
+            this.cbxHoten.IntegralHeight = false;
             this.cbxHoten.Location = new System.Drawing.Point(206, 44);
             this.cbxHoten.Name = "cbxHoten";
             this.cbxHoten.Size = new System.Drawing.Size(176, 21);

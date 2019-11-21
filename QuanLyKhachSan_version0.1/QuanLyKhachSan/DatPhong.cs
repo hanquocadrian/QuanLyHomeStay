@@ -188,8 +188,8 @@ namespace QuanLyKhachSan
             string temp = str;
             int charfrom = temp.IndexOf('(', 0) + 1;
             int charto = temp.IndexOf(')', 0) - 1;
-            //  h u n g _ ( 1 2 3 )
-            //  0 1 2 3 4 5 6 7 8 9
+            //  h u n g _ ( 1 2 3 4 )
+            //  0 1 2 3 4 5 6 7 8 9 10
             int charlenght = charto - charfrom + 1;
             remember_cmnd = int.Parse(temp.Substring(charfrom, charlenght));
             remember_tenkh = temp.Substring(0, charfrom - 3 + 1);
