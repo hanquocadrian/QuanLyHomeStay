@@ -21,6 +21,9 @@ namespace QuanLyKhachSan
 
         private List<CKhachHang> arrKH;
         private List<CPhong> arrPKS;
+
+        private string remember_tenkh;
+        private int remember_cmnd;
         #endregion
 
         public DatPhong()
@@ -69,7 +72,7 @@ namespace QuanLyKhachSan
             {
                 foreach(CKhachHang kh in arrKH)
                 {
-                    cbxHoten.Items.Add(kh.Hoten);
+                    cbxHoten.Items.Add(kh.Hoten+" ("+kh.CMND+")");
                 }
             }
         }
@@ -102,16 +105,16 @@ namespace QuanLyKhachSan
             ShowDataTenKH();
             cbxHoten.Select();
         }
-        
+
         private void cbxHoten_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cbxCMND.Items.Clear();
-            foreach (CKhachHang kh in arrKH)
-            {
-                if (string.Compare(kh.Hoten, cbxHoten.Text) == 0)
-                    cbxCMND.Items.Add(kh.CMND);
-            }
-            cbxCMND.SelectedIndex = -1;
+            //cbxCMND.Items.Clear();
+            //foreach (CKhachHang kh in arrKH)
+            //{
+            //    if (string.Compare(kh.Hoten, cbxHoten.Text) == 0)
+            //        cbxCMND.Items.Add(kh.CMND);
+            //}
+            //cbxCMND.SelectedIndex = -1;
         }
 
         public void hienthi()
@@ -133,8 +136,8 @@ namespace QuanLyKhachSan
         public void hienthiDP(int j)
         {
             CDatPhong dp = (CDatPhong)arrDP[j];
-            cbxHoten.Text = dp.Kh.Hoten;
-            cbxCMND.Text = dp.Kh.CMND.ToString();
+            cbxHoten.Text = dp.Kh.Hoten+" ("+dp.Kh.CMND.ToString()+')';
+            //cbxCMND.Text = dp.Kh.CMND.ToString();
             dtpNgayden.Value = dp.Ngayden;
             dtpNgaydi.Value = dp.Ngaydi;
             txtSoPhong.Text = dp.Phong.Sophong.ToString();
@@ -173,11 +176,23 @@ namespace QuanLyKhachSan
         public void CleanDP()
         {
             cbxHoten.Text="";
-            cbxCMND.Text = "";
+            //cbxCMND.Text = "";
             txtSoPhong.Text = "";
             txtSoNgayO.Text = "";
             cbxLoaiphong.Text = "";
             txtThanhTien.Text = "";
+        }
+
+        public void layTenKHVaCMND(string str)
+        {
+            string temp = str;
+            int charfrom = temp.IndexOf('(', 0) + 1;
+            int charto = temp.IndexOf(')', 0) - 1;
+            //  h u n g _ ( 1 2 3 )
+            //  0 1 2 3 4 5 6 7 8 9
+            int charlenght = charto - charfrom + 1;
+            remember_cmnd = int.Parse(temp.Substring(charfrom, charlenght));
+            remember_tenkh = temp.Substring(0, charfrom - 3 + 1);
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -192,8 +207,10 @@ namespace QuanLyKhachSan
                     return;
                 }
 
-                string hotenkh = cbxHoten.Text;
-                int socmnd = int.Parse(cbxCMND.Text);
+
+                layTenKHVaCMND(cbxHoten.Text);
+                string hotenkh = remember_tenkh;
+                int socmnd = remember_cmnd;
                 if (arrDP.Count>0)
                 {
                     foreach(CDatPhong dp_old in arrDP)
@@ -362,8 +379,9 @@ namespace QuanLyKhachSan
                         break;
                     }
                 }
-                string hotenkh = cbxHoten.Text;
-                int socmnd = int.Parse(cbxCMND.Text);
+                layTenKHVaCMND(cbxHoten.Text);
+                string hotenkh = remember_tenkh;
+                int socmnd = remember_cmnd;
 
                 if (txtSoPhong.Text == "")
                 {
