@@ -55,3 +55,17 @@ D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version0.1\QuanLyKhachSan\obj\Debug\
 D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version0.1\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.GenerateResource.cache
 D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version0.1\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe
 D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version0.1\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.pdb
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.exe.config
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.exe
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\bin\Debug\QuanLyKhachSan.pdb
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csprojAssemblyReference.cache
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.DatPhong.resources
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.FormLogin.resources
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.FormManager.resources
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.KhachHang.resources
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.NhanVien.resources
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.PhongKS.resources
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.Properties.Resources.resources
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.csproj.GenerateResource.cache
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.exe
+D:\hqa_github\QuanLyHomeStay\QuanLyKhachSan_version2.3\QuanLyKhachSan\obj\Debug\QuanLyKhachSan.pdb

@@ -62,12 +62,69 @@ namespace QuanLyKhachSan
             }
         }
 
+        private CPhong timPDon()
+        {
+            CPhong pdon = null; 
+            if(arrPKS.Count>0)
+            {
+                foreach(CPhong p in arrPKS)
+                {
+                    if (string.Compare(p.Loaiphong, "Đơn") == 0)
+                    {
+                        pdon = p;
+                        break;
+                    }
+                }
+            }
+            return pdon;
+        }
+        private CPhong timPDoi()
+        {
+            CPhong pdoi = null;
+            if (arrPKS.Count > 0)
+            {
+                foreach (CPhong p in arrPKS)
+                {
+                    if (string.Compare(p.Loaiphong, "Đôi") == 0)
+                    {
+                        pdoi = p;
+                        break;
+                    }
+                }
+            }
+            return pdoi;
+        }
+        private CPhong timPDB()
+        {
+            CPhong pdb = null;
+            if (arrPKS.Count > 0)
+            {
+                foreach (CPhong p in arrPKS)
+                {
+                    if (string.Compare(p.Loaiphong, "Đơn") == 0)
+                    {
+                        pdb = p;
+                        break;
+                    }
+                }
+            }
+            return pdb;
+        }
         private void PhongKS_Load(object sender, EventArgs e)
         {
             arrPKS = new List<CPhong>();
             OpenP("dsp.txt");
             if (arrPKS.Count > 0)
+            {
                 hienthi();
+                CPhong pdon = timPDon();
+                setupGiaPhong(pdon.Loaiphong, pdon.Gia);
+                CPhong pdoi = timPDoi();
+                setupGiaPhong(pdoi.Loaiphong, pdoi.Gia);
+                CPhong pdb = timPDB();
+                setupGiaPhong(pdb.Loaiphong, pdb.Gia);
+            }
+
         }
 
         private void cbxLoaiphong_SelectedIndexChanged_1(object sender, EventArgs e)
