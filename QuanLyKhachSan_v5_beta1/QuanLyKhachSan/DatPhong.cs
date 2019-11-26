@@ -106,6 +106,18 @@ namespace QuanLyKhachSan
             txtThanhTien.Text = "";
         }
 
+        public int timGiaPhong(string loai)
+        {
+            foreach(CPhong p in frmmng.Data.ArrPKS)
+            {
+                if(string.Equals(loai,p.Loaiphong))
+                {
+                    return p.Gia;
+                }
+            }
+            return -1;
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (radSetup.Checked == true)
@@ -145,6 +157,8 @@ namespace QuanLyKhachSan
                 dp.Phong.Loaiphong = loaiphong;
                 dp.Ngayden = ngayden;
                 dp.Ngaydi = ngaydi;
+
+                dp.Phong.Gia = timGiaPhong(dp.Phong.Loaiphong);
 
                 frmmng.Data.ArrDP.Add(dp);
                 txtSoNgayO.Text = dp.SoNgayO().ToString();
@@ -310,6 +324,8 @@ namespace QuanLyKhachSan
                 dp.Phong.Loaiphong = loaiphong;
                 dp.Ngayden = ngayden;
                 dp.Ngaydi = ngaydi;
+
+                dp.Phong.Gia = timGiaPhong(dp.Phong.Loaiphong);
 
                 txtSoNgayO.Text = dp.SoNgayO().ToString();
                 txtThanhTien.Text = dp.ThanhTien().ToString();

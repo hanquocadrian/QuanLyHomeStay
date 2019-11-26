@@ -40,15 +40,7 @@ namespace QuanLyKhachSan
         public float ThanhTien()
         {
             float s;
-            if (string.Compare("Đơn", phong.Loaiphong) == 0)
-            {
-                s = (float)(100000 * SoNgayO());
-            }
-            else if (string.Compare("Đôi", phong.Loaiphong) == 0)
-            {
-                s = (float)(300000 * SoNgayO());
-            }
-            else s = (float)(600000 * SoNgayO());
+            s = Convert.ToSingle(phong.Gia) * SoNgayO();
             return s;
         }
     }
