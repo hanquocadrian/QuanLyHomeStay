@@ -16,14 +16,10 @@ namespace QuanLyKhachSan
     {
         #region Attribute
         FormManager frmmng = new FormManager();
-        CdmDatPhong xldp = new CdmDatPhong();
-        CdmPhong xlp = new CdmPhong();
-        CdmKhachHang xlkh = new CdmKhachHang();
-        CdmHistoryKH xllskh = new CdmHistoryKH();
         private int i = -1;
 
         private string sTenKH;
-        private int sCMND;
+        private int iCMND;
         #endregion
 
         public DatPhong()
@@ -34,13 +30,9 @@ namespace QuanLyKhachSan
         private void DatPhong_Load(object sender, EventArgs e)
         {
             frmmng.Data.OpenKH("dskh.txt");
-            xlkh.ArrKH = frmmng.Data.ArrKH;
             frmmng.Data.OpenP("dsp.txt");
-            xlp.ArrPKS = frmmng.Data.ArrPKS;
             frmmng.Data.OpenDP("dsdp.txt");
-            xldp.ArrDP = frmmng.Data.ArrDP;
             frmmng.Data.OpenLSKH("dslskh.txt");
-            xllskh.ArrLS = frmmng.Data.ArrLS;
 
             hienthi();
             ShowDataTenKH();
@@ -50,7 +42,7 @@ namespace QuanLyKhachSan
         public void hienthi()
         {
             lvwDP.Items.Clear();
-            foreach (CDatPhong dp  in xldp.ArrDP)
+            foreach (CDatPhong dp  in frmmng.Data.ArrDP)
             {
                 ListViewItem li = lvwDP.Items.Add(dp.Kh.Hoten);
                 li.SubItems.Add(dp.Kh.CMND.ToString());
@@ -65,7 +57,7 @@ namespace QuanLyKhachSan
 
         public void hienthiDP(int j)
         {
-            CDatPhong dp = (CDatPhong)xldp.ArrDP[j];
+            CDatPhong dp = (CDatPhong)frmmng.Data.ArrDP[j];
             cbxHoten.Text = dp.Kh.Hoten + " (" + dp.Kh.CMND.ToString() + ")";
             dtpNgayden.Value = dp.Ngayden;
             dtpNgaydi.Value = dp.Ngaydi;
@@ -77,20 +69,19 @@ namespace QuanLyKhachSan
 
         public void setupBookedP(int sophong,string loaiphong)
         {
-            foreach(CPhong p in xlp.ArrPKS)
+            foreach(CPhong p in frmmng.Data.ArrPKS)
             {
                 if (string.Compare(p.Loaiphong, loaiphong) == 0 && p.Sophong == sophong)
                     p.Trangthai = "Booked";
             }
-            frmmng.Data.ArrPKS= xlp.ArrPKS;
             frmmng.Data.SaveP("dsp.txt");
         }
         public void ShowDataTenKH()
         {
             cbxHoten.Items.Clear();
-            if (xlkh.ArrKH.Count > 0)
+            if (frmmng.Data.ArrKH.Count > 0)
             {
-                foreach (CKhachHang kh in xlkh.ArrKH)
+                foreach (CKhachHang kh in frmmng.Data.ArrKH)
                 {
                     cbxHoten.Items.Add(kh.Hoten + " (" + kh.CMND + ")");
                 }
@@ -104,7 +95,7 @@ namespace QuanLyKhachSan
             int charto = temp.IndexOf(')', 0) - 1;
             int charlength = charto - charfrom + 1;
             sTenKH = temp.Substring(0, charfrom - 3 + 1);
-            sCMND = int.Parse(temp.Substring(charfrom, charlength));
+            iCMND = int.Parse(temp.Substring(charfrom, charlength));
         }
         public void CleanDP()
         {
@@ -117,10 +108,12 @@ namespace QuanLyKhachSan
 
         public int timGiaPhong(string loai)
         {
-            foreach(CPhong p in xlp.ArrPKS)
+            foreach(CPhong p in frmmng.Data.ArrPKS)
             {
-                if (string.Equals(p.Loaiphong, loai))
+                if(string.Equals(loai,p.Loaiphong))
+                {
                     return p.Gia;
+                }
             }
             return -1;
         }
@@ -138,7 +131,19 @@ namespace QuanLyKhachSan
                 }
                 layTenKHvaCMND(cbxHoten.Text);
                 string hotenkh = sTenKH;
-                int socmnd = sCMND;
+                int socmnd = iCMND;
+                if (frmmng.Data.ArrDP.Count>0)
+                {
+                    foreach(CDatPhong dp_old in frmmng.Data.ArrDP)
+                    {
+                        if(string.Equals(hotenkh,dp_old.Kh.Hoten)&&socmnd==dp_old.Kh.CMND)
+                        {
+                            MessageBox.Show("Khách Hàng đó đã đặt phòng rồi", "Error");
+                            return;
+                        }
+                    }
+                }
+
                 int sophong = int.Parse(txtSoPhong.Text);
                 string loaiphong = cbxLoaiphong.Text;
 
@@ -155,18 +160,14 @@ namespace QuanLyKhachSan
 
                 dp.Phong.Gia = timGiaPhong(dp.Phong.Loaiphong);
 
-                if (xldp.them(dp))
-                {
-                    txtSoNgayO.Text = dp.SoNgayO().ToString();
-                    txtThanhTien.Text = dp.ThanhTien().ToString();
-                    setupBookedP(dp.Phong.Sophong, dp.Phong.Loaiphong);
+                frmmng.Data.ArrDP.Add(dp);
+                txtSoNgayO.Text = dp.SoNgayO().ToString();
+                txtThanhTien.Text = dp.ThanhTien().ToString();
+                setupBookedP(dp.Phong.Sophong, dp.Phong.Loaiphong);
 
-                    i++;
-                    CleanDP();
-                    hienthi();
-                }
-                else
-                    MessageBox.Show("Khách Hàng đã đặt rồi", "Error");
+                i++;
+                CleanDP();
+                hienthi();
             }
         }
 
@@ -180,7 +181,7 @@ namespace QuanLyKhachSan
                     return;
                 }
                 bool checkemptyp = false;
-                foreach (CPhong p in xlp.ArrPKS)
+                foreach (CPhong p in frmmng.Data.ArrPKS)
                 {
                     if (string.Compare(p.Loaiphong, cbxLoaiphong.Text) == 0 && string.Compare(p.Trangthai, "Empty") == 0)
                     {
@@ -196,7 +197,7 @@ namespace QuanLyKhachSan
         private CKhachHang timInfoKH(string hoten, int cmnd)
         {
             CKhachHang timkh = null;
-            foreach (CKhachHang kh  in xlkh.ArrKH)
+            foreach (CKhachHang kh  in frmmng.Data.ArrKH)
             {
                 if (string.Compare(kh.Hoten,hoten)==0 && cmnd==kh.CMND)
                 {
@@ -209,19 +210,19 @@ namespace QuanLyKhachSan
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (xldp.ArrDP.Count <= 0)
+            if (frmmng.Data.ArrDP.Count <= 0)
             {
                 MessageBox.Show("Không có dữ liệu!", "Error");
                 return;
             }
             CHistory ls = new CHistory();
-            ls.Dp.Kh.Hoten = xldp.ArrDP[i].Kh.Hoten;
-            ls.Dp.Kh.CMND = xldp.ArrDP[i].Kh.CMND;
-            ls.Dp.Ngayden = xldp.ArrDP[i].Ngayden;
-            ls.Dp.Ngaydi = xldp.ArrDP[i].Ngaydi;
-            ls.Dp.Phong.Sophong = xldp.ArrDP[i].Phong.Sophong;
-            ls.Dp.Phong.Loaiphong = xldp.ArrDP[i].Phong.Loaiphong;
-            ls.Dp.Phong.Gia = xldp.ArrDP[i].Phong.Gia;
+            ls.Dp.Kh.Hoten = frmmng.Data.ArrDP[i].Kh.Hoten;
+            ls.Dp.Kh.CMND = frmmng.Data.ArrDP[i].Kh.CMND;
+            ls.Dp.Ngayden = frmmng.Data.ArrDP[i].Ngayden;
+            ls.Dp.Ngaydi = frmmng.Data.ArrDP[i].Ngaydi;
+            ls.Dp.Phong.Sophong = frmmng.Data.ArrDP[i].Phong.Sophong;
+            ls.Dp.Phong.Loaiphong = frmmng.Data.ArrDP[i].Phong.Loaiphong;
+            ls.Dp.Phong.Gia = frmmng.Data.ArrDP[i].Phong.Gia;
             CKhachHang timkh = timInfoKH(ls.Dp.Kh.Hoten, ls.Dp.Kh.CMND);
             if (timkh == null)
             {
@@ -234,53 +235,39 @@ namespace QuanLyKhachSan
             ls.Kh.Tuoi = timkh.Tuoi;
             ls.Kh.Quoctich = timkh.Quoctich;
             ls.Kh.Sdt = timkh.Sdt;
-            xllskh.them(ls);
+            frmmng.Data.ArrLS.Add(ls);
 
-            CDatPhong dp = xldp.ArrDP[i];
-            foreach (CPhong p in xlp.ArrPKS)
+            CDatPhong dp = frmmng.Data.ArrDP[i];
+            foreach (CPhong p in frmmng.Data.ArrPKS)
             {
                 if (p.Sophong == dp.Phong.Sophong && string.Compare(p.Loaiphong, dp.Phong.Loaiphong) == 0)
                 {
                     p.Trangthai = "Empty";
-                    frmmng.Data.ArrPKS = xlp.ArrPKS;
                     frmmng.Data.SaveP("dsp.txt");
                     break;
                 }
             }
-            foreach (CKhachHang kh in xlkh.ArrKH)
+            foreach (CKhachHang kh in frmmng.Data.ArrKH)
             {
                 if(kh.CMND==dp.Kh.CMND)
                 {
-                    if (xlkh.xoa(kh.CMND))
-                    {
-                        frmmng.Data.ArrKH = xlkh.ArrKH;
-                        frmmng.Data.SaveKH("dskh.txt");
-                        break;
-                    }
+                    frmmng.Data.ArrKH.Remove(kh);
+                    frmmng.Data.SaveKH("dskh.txt");
+                    break;
                 }
             }
             ShowDataTenKH();
-            foreach (int j in lvwDP.SelectedIndices)
-            {
-                if (xldp.xoa(int.Parse(lvwDP.Items[j].SubItems[1].Text)))
-                {
-                    i--;
-                    if (i < 0 && xldp.ArrDP.Count > 0) i = 0;
-                    if (i >= 0)
-                        hienthiDP(i);
-                    hienthi();
-                }
-                else
-                    MessageBox.Show("Hết Data or Không tìm thấy Mã để xóa", "Error");
-                break;
-            }
+            frmmng.Data.ArrDP.RemoveAt(i);
+            i--;
+            if (i < 0 && frmmng.Data.ArrDP.Count > 0) i = 0;
+            if (i >= 0)
+                hienthiDP(i);
+            hienthi();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            frmmng.Data.ArrLS = xllskh.ArrLS;
             frmmng.Data.SaveLSKH("dslskh.txt");
-            frmmng.Data.ArrDP = xldp.ArrDP;
             frmmng.Data.SaveDP("dsdp.txt");
             this.Hide();
             frmmng.ShowDialog();
@@ -301,22 +288,21 @@ namespace QuanLyKhachSan
         {
             //  Vị trí đặt Phòng Thứ i của P cũ sẽ bị mất đi -> Empty
             // Setup như nhập, bỏ ik clearDP vs arr Add
-            if (xldp.ArrDP.Count > 0 && radSetup.Checked == true)
+            if (frmmng.Data.ArrDP.Count > 0 && radSetup.Checked == true)
             {
-                CDatPhong dp_old = xldp.ArrDP[i];
-                foreach (CPhong p in xlp.ArrPKS)
+                CDatPhong dp_old = frmmng.Data.ArrDP[i];
+                foreach (CPhong p in frmmng.Data.ArrPKS)
                 {
                     if (p.Sophong == dp_old.Phong.Sophong && string.Compare(p.Loaiphong, dp_old.Phong.Loaiphong) == 0)
                     {
                         p.Trangthai = "Empty";
-                        frmmng.Data.ArrPKS = xlp.ArrPKS;
                         frmmng.Data.SaveP("dsp.txt");
                         break;
                     }
                 }
                 layTenKHvaCMND(cbxHoten.Text);
                 string hotenkh = sTenKH;
-                int socmnd = sCMND;
+                int socmnd = iCMND;
 
                 if (txtSoPhong.Text == "")
                 {
@@ -331,7 +317,7 @@ namespace QuanLyKhachSan
                 DateTime ngayden = dtpNgayden.Value;
                 DateTime ngaydi = dtpNgaydi.Value;
 
-                CDatPhong dp = new CDatPhong();
+                CDatPhong dp = frmmng.Data.ArrDP[i];
                 dp.Kh.Hoten = hotenkh;
                 dp.Kh.CMND = socmnd;
                 dp.Phong.Sophong = sophong;
@@ -341,15 +327,12 @@ namespace QuanLyKhachSan
 
                 dp.Phong.Gia = timGiaPhong(dp.Phong.Loaiphong);
 
-                if (xldp.sua(dp))
-                {
-                    txtSoNgayO.Text = dp.SoNgayO().ToString();
-                    txtThanhTien.Text = dp.ThanhTien().ToString();
-                    setupBookedP(dp.Phong.Sophong, dp.Phong.Loaiphong);
-                    hienthi();
-                }
-                else
-                    MessageBox.Show("Hết Data or Sai Mã", "Error");
+                txtSoNgayO.Text = dp.SoNgayO().ToString();
+                txtThanhTien.Text = dp.ThanhTien().ToString();
+                setupBookedP(dp.Phong.Sophong, dp.Phong.Loaiphong);
+
+                i++;
+                hienthi();
             }
         }
 

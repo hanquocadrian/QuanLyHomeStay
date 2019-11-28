@@ -40,7 +40,7 @@ namespace QuanLyKhachSan
         public float ThanhTien()
         {
             float s;
-            s = Convert.ToSingle(this.phong.Gia) * SoNgayO();
+            s = Convert.ToSingle(phong.Gia) * SoNgayO();
             return s;
         }
     }

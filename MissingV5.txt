@@ -1,4 +1,0 @@
-FormNV: txt lệch, Beta2 rồi
-test kĩ hàm xóa
-FormDP: Sửa ko có i++; 
-FormLS:txt lệch, Beta2 rồi
