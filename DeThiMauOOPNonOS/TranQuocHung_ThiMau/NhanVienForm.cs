@@ -18,6 +18,7 @@ namespace TranQuocHung_ThiMau
         #region Attributes
         private PhongBan xlnv = new PhongBan();
         PhongBanForm frmpb = new PhongBanForm();
+        public Hashtable dspb;
         #endregion
         #region Method
         private void hienThi(PhongBan p)
@@ -40,11 +41,10 @@ namespace TranQuocHung_ThiMau
             txtLCB.Text = a.LuongCb1.ToString();
             txtHS.Text = a.HeSo1.ToString();
         }
-
         public string timMaPB(string ten)
         {
             string mapb = "";
-            foreach (DictionaryEntry item in PhongBanForm.dspb)
+            foreach (DictionaryEntry item in frmpb.Xl.DmPhongBan)
             {
                 PhongBan pb = (PhongBan)item.Value;
                 if(string.Equals(pb.TenPhong1,ten))
@@ -94,7 +94,7 @@ namespace TranQuocHung_ThiMau
             txtLCB.Text = "";
             txtHS.Text = "";
             PhongBan p = null;
-            foreach (DictionaryEntry item in PhongBanForm.dspb)
+            foreach (DictionaryEntry item in frmpb.Xl.DmPhongBan)
             {
                 PhongBan ip = (PhongBan)item.Value;
                 if(string.Equals(ip.TenPhong1,cboTP.SelectedItem.ToString()))
@@ -108,10 +108,11 @@ namespace TranQuocHung_ThiMau
 
         private void NhanVienForm_Load(object sender, EventArgs e)
         {
-            if (PhongBanForm.dspb.Count > 0)
+            frmpb.Xl.DmPhongBan = PhongBanForm.dspb;
+            if (frmpb.Xl.DmPhongBan.Count > 0)
             {
                 cboTP.Items.Clear();
-                foreach (DictionaryEntry item in PhongBanForm.dspb)
+                foreach (DictionaryEntry item in frmpb.Xl.DmPhongBan)
                 {
                     PhongBan pb = (PhongBan)item.Value;
                     cboTP.Items.Add(pb.TenPhong1);

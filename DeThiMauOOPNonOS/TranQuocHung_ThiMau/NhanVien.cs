@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace TranQuocHung_ThiMau
 {
-    [Serializable]
     class NhanVien
     {
         private string Msnv;

@@ -17,9 +17,8 @@ namespace TranQuocHung_ThiMau
     {
         #region Attributes
         private CdmPhongBan xl = new CdmPhongBan();
-        public static Hashtable dspb;
-
         internal CdmPhongBan Xl { get => xl; set => xl = value; }
+        public static Hashtable dspb = new Hashtable();
         #endregion
         #region Method
         public void hienThi()
@@ -53,7 +52,7 @@ namespace TranQuocHung_ThiMau
             if (Xl.them(p))
             {
                 hienThi();
-                dspb = Xl.DmPhongBan;
+                dspb = xl.DmPhongBan;
             }
             else
                 MessageBox.Show("Trùng mã phòng", "Error");
@@ -66,7 +65,7 @@ namespace TranQuocHung_ThiMau
                 if (Xl.xoa(lvwPB.Items[item].Text))
                 {
                     hienThi();
-                    dspb = Xl.DmPhongBan;
+                    dspb = xl.DmPhongBan;
                 }
                 break;
             }

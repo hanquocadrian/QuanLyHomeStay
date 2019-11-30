@@ -41,38 +41,6 @@ namespace TranQuocHung_ThiMau
             txtLCB.Text = a.LuongCb1.ToString();
             txtHS.Text = a.HeSo1.ToString();
         }
-        //public void OpenNV(string filename)
-        //{
-        //    FileStream fs = null;
-        //    try
-        //    {
-        //        fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
-        //        BinaryFormatter bf = new BinaryFormatter();
-        //        xlnv.DmNhanVien = (Hashtable)bf.Deserialize(fs);
-        //        fs.Close();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        fs.Close();
-        //        //throw;
-        //    }
-        //}
-        //public void SaveNV(string filename)
-        //{
-        //    FileStream fs = null;
-        //    try
-        //    {
-        //        fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write);
-        //        BinaryFormatter bf = new BinaryFormatter();
-        //        bf.Serialize(fs, xlnv.DmNhanVien);
-        //        fs.Close();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        fs.Close();
-        //        throw;
-        //    }
-        //}
         public string timMaPB(string ten)
         {
             string mapb = "";

@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace TranQuocHung_ThiMau
 {
-    [Serializable]
     class PhongBan
     {
         private string MaPhong;

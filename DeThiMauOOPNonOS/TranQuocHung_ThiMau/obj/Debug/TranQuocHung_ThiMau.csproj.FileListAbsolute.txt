@@ -33,9 +33,6 @@ D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOP\TranQuocHung_ThiMau\obj\Deb
 D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOP\TranQuocHung_ThiMau\obj\Debug\TranQuocHung_ThiMau.csproj.GenerateResource.cache
 D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOP\TranQuocHung_ThiMau\obj\Debug\TranQuocHung_ThiMau.exe
 D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOP\TranQuocHung_ThiMau\obj\Debug\TranQuocHung_ThiMau.pdb
-D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\bin\Debug\TranQuocHung_ThiMau.exe.config
-D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\bin\Debug\TranQuocHung_ThiMau.exe
-D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\bin\Debug\TranQuocHung_ThiMau.pdb
 D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\obj\Debug\TranQuocHung_ThiMau.csprojAssemblyReference.cache
 D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\obj\Debug\TranQuocHung_ThiMau.Form1.resources
 D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\obj\Debug\TranQuocHung_ThiMau.NhanVienForm.resources
@@ -45,3 +42,6 @@ D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\ob
 D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\obj\Debug\TranQuocHung_ThiMau.csproj.GenerateResource.cache
 D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\obj\Debug\TranQuocHung_ThiMau.exe
 D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\obj\Debug\TranQuocHung_ThiMau.pdb
+D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\bin\Debug\TranQuocHung_ThiMau.exe.config
+D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\bin\Debug\TranQuocHung_ThiMau.exe
+D:\01_QuocHung\github_hqa\QuanLyHomeStay\DeThiMauOOPNonOS\TranQuocHung_ThiMau\bin\Debug\TranQuocHung_ThiMau.pdb
