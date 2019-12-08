@@ -31,6 +31,7 @@ namespace QuanLyKhachSan
         public HoaDonThanhToan()
         {
             InitializeComponent();
+            frmmng.Data.OpenP("dsp.txt");
             frmmng.Data.OpenKH("dskh.txt");
             frmmng.Data.OpenDP("dsdp.txt");
             frmmng.Data.OpenDSDDV("dsddv.txt");
@@ -48,6 +49,7 @@ namespace QuanLyKhachSan
         public HoaDonThanhToan(string kh)
         {
             InitializeComponent();
+            frmmng.Data.OpenP("dsp.txt");
             frmmng.Data.OpenKH("dskh.txt");
             frmmng.Data.OpenDP("dsdp.txt");
             frmmng.Data.OpenDSDDV("dsddv.txt");
@@ -145,37 +147,44 @@ namespace QuanLyKhachSan
             int i;
             int j = 0;
             int dem = 0;
-            for (i = 0; i < frmmng.Data.ArrDP.Count; i++)
+            if (hoadonKH.Dp != null)
             {
-                if (hoadonKH.Kh.CMND==frmmng.Data.ArrDP[i].Kh.CMND)
+                for (i = 0; i < frmmng.Data.ArrDP.Count; i++)
                 {
-                    while (dem<=frmmng.Data.ArrDP[i].Phong.Count-1)
+                    if (hoadonKH.Kh.CMND == frmmng.Data.ArrDP[i].Kh.CMND)
                     {
-                        int sophong = frmmng.Data.ArrDP[i].Phong[j++].Sophong;
-                        foreach (CPhong item in frmmng.Data.ArrPKS)
+                        while (dem <= frmmng.Data.ArrDP[i].Phong.Count - 1)
                         {
-                            if (sophong == item.Sophong)
+                            int sophong = frmmng.Data.ArrDP[i].Phong[j++].Sophong;
+                            foreach (CPhong item in frmmng.Data.ArrPKS)
                             {
-                                item.Trangthai = "Empty";
-                                dem++;
+                                if (sophong == item.Sophong)
+                                {
+                                    item.Trangthai = "Empty";
+                                    dem++;
+                                }
                             }
                         }
+                        frmmng.Data.ArrDP.RemoveAt(i);
+                        frmmng.Data.SaveP("dsp.txt");
+                        frmmng.Data.SaveDP("dsdp.txt");
+                        break;
                     }
-                    frmmng.Data.ArrDP.RemoveAt(i);
-                    frmmng.Data.SaveP("dsp.txt");
-                    frmmng.Data.SaveDP("dsdp.txt");
-                    break;
                 }
             }
-            for (i = 0; i < frmmng.Data.ArrDDV.Count; i++)
+            if (hoadonKH.Ddv != null)
             {
-                if (frmmng.Data.ArrDDV[i].Kh.CMND==hoadonKH.Kh.CMND)
+                for (i = 0; i < frmmng.Data.ArrDDV.Count; i++)
                 {
-                    frmmng.Data.ArrDDV.RemoveAt(i);
-                    frmmng.Data.SaveDSDDV("dsddv.txt");
-                    break;
+                    if (frmmng.Data.ArrDDV[i].Kh.CMND == hoadonKH.Kh.CMND)
+                    {
+                        frmmng.Data.ArrDDV.RemoveAt(i);
+                        frmmng.Data.SaveDSDDV("dsddv.txt");
+                        break;
+                    }
                 }
             }
+
             for (i = 0; i < frmmng.Data.ArrKH.Count; i++)
             {
                 if (frmmng.Data.ArrKH[i].CMND == hoadonKH.Kh.CMND)
@@ -221,7 +230,6 @@ namespace QuanLyKhachSan
                 CHistory lskh = new CHistory();
                 lskh.Ctmbill = hoadonKH;
                 frmmng.Data.ArrLS.Add(lskh);
-                frmmng.Data.SaveLSKH("dslskh.txt");
                 xoaHoaDonKH(hoadonKH);
                 MessageBox.Show("Thanh toán thành công.");
                 clearDisplay();
@@ -241,6 +249,7 @@ namespace QuanLyKhachSan
         private void btnThoat_Click(object sender, EventArgs e)
         {
             frmmng.Data.SaveDSBill("dsbill.txt");
+            frmmng.Data.SaveLSKH("dslskh.txt");
             this.Hide();
             frmmng.ShowDialog();
             this.Close();

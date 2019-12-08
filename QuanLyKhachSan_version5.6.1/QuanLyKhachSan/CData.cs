@@ -52,6 +52,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 //throw;
             }
         }
@@ -67,6 +68,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 throw;
             }
         }
@@ -83,6 +85,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 //throw;
             }
         }
@@ -98,6 +101,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 throw;
             }
         }
@@ -114,6 +118,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 //throw;
             }
         }
@@ -129,6 +134,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 throw;
             }
         }
@@ -145,6 +151,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 //throw;
             }
         }
@@ -160,6 +167,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 throw;
             }
         }
@@ -176,6 +184,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 //throw;
             }
         }
@@ -191,6 +200,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 throw;
             }
         }
@@ -207,6 +217,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 //throw;
             }
         }
@@ -222,6 +233,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 throw;
             }
         }
@@ -238,6 +250,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 //throw;
             }
         }
@@ -253,6 +266,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 throw;
             }
         }
@@ -269,6 +283,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 //throw;
             }
         }
@@ -284,6 +299,7 @@ namespace QuanLyKhachSan
             }
             catch (Exception)
             {
+                fs.Close();
                 throw;
             }
         }

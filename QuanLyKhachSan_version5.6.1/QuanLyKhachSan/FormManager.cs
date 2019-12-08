@@ -147,10 +147,10 @@ namespace QuanLyKhachSan
 
         private void btnLichSu_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            //HistoryKH frmLSKH = new HistoryKH();
-            //frmLSKH.ShowDialog();
-            //this.Close();
+            this.Hide();
+            HistoryKH frmLSKH = new HistoryKH();
+            frmLSKH.ShowDialog();
+            this.Close();
         }
 
         private void btnDichVu_Click(object sender, EventArgs e)
