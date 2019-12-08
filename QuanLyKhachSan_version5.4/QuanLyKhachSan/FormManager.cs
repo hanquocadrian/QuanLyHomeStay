@@ -171,10 +171,10 @@ namespace QuanLyKhachSan
 
         private void btnBill_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            //Bill frmB = new Bill();
-            //frmB.ShowDialog();
-            //this.Close();
+            this.Hide();
+            HoaDonThanhToan frmB = new HoaDonThanhToan();
+            frmB.ShowDialog();
+            this.Close();
         }
 
 

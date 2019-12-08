@@ -127,6 +127,7 @@ namespace QuanLyKhachSan
             txtSoNgayO.Text = "";
             cbxLoaiphong.Text = "";
             txtThanhTien.Text = "";
+            txtTongGiaTien.Text = "";
         }
 
         public int timGiaPhong(string loai)
@@ -172,7 +173,6 @@ namespace QuanLyKhachSan
 
                             item.Phong.Add(p);
 
-                            //frmmng.Data.ArrDP.Add(dp);
                             txtSoNgayO.Text = item.SoNgayO().ToString();
 
                             txtThanhTien.Text = item.ThanhTien(loaiphong).ToString();
@@ -181,14 +181,15 @@ namespace QuanLyKhachSan
                             CleanDP();
                             hienthi();
 
-                            //foreach (CBill item in frmmng.Data.ArrBill)
-                            //{
-                            //    if (item.Kh.CMND == dp.Kh.CMND)
-                            //    {
-                            //        item.Dp = dp;
-                            //        break;
-                            //    }
-                            //}
+                            foreach (CBill bill in frmmng.Data.ArrBill)
+                            {
+                                if (bill.Kh.CMND == iCMND)
+                                {
+                                    bill.Dp= item;
+                                    break;
+                                }
+                            }
+                            break;
                         }
                     }
                 }
@@ -329,10 +330,10 @@ namespace QuanLyKhachSan
             #endregion
             frmmng.Data.SaveDP("dsdp.txt");
             frmmng.Data.SaveDSBill("dsbill.txt");
-            //this.Hide();
-            //Bill frmB = new Bill(cbxHoten.Text);
-            //frmB.ShowDialog();
-            //this.Close();
+            this.Hide();
+            HoaDonThanhToan frmB = new HoaDonThanhToan(cbxHoten.Text);
+            frmB.ShowDialog();
+            this.Close();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -346,9 +347,9 @@ namespace QuanLyKhachSan
         }
         public void hienThiCacPhongChoose(int cmnd)
         {
+            lvwChooseP.Items.Clear();
             foreach (CDatPhong item in frmmng.Data.ArrDP)
             {
-                lvwChooseP.Items.Clear();
                 if(item.Kh.CMND==cmnd)
                 {
                     foreach (CPhong Phong in item.Phong)

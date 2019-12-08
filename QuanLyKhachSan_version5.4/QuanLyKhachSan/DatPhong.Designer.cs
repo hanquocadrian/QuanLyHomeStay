@@ -241,7 +241,7 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(90, 49);
             this.btnXoa.TabIndex = 46;
-            this.btnXoa.Text = "CheckOut";
+            this.btnXoa.Text = "Thủ tục ra";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
