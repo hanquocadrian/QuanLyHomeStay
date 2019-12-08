@@ -178,7 +178,6 @@ namespace QuanLyKhachSan
                             txtThanhTien.Text = item.ThanhTien(loaiphong).ToString();
                             setupBookedP(sophong, loaiphong);
 
-                            i++;
                             CleanDP();
                             hienthi();
 
@@ -358,6 +357,7 @@ namespace QuanLyKhachSan
                         li.SubItems.Add(Phong.Loaiphong);
                         li.SubItems.Add(item.ThanhTien(Phong.Loaiphong).ToString());
                     }
+                    break;
                 }
             }
         }
