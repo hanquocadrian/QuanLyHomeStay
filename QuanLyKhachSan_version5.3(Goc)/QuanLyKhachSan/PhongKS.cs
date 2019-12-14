@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,9 +19,30 @@ namespace QuanLyKhachSan
         private int i = -1;
 
         int gpdon, gpdoi, gpcc;
+
+
+        private Hashtable dsplskh = new Hashtable();
+        private CPhong timSP(int sp)
+        {
+            return (CPhong)dsplskh[sp];
+        }
+        public void getDSPLSKH()
+        {
+            frmmng.Data.OpenLSKH("dslskh.txt");
+            foreach (CHistory lskh in frmmng.Data.ArrLS)
+            {
+                if(lskh.Ctmbill.Dp!=null)
+                {
+                    CPhong a = timSP(lskh.Ctmbill.Dp.Phong.Sophong);
+                    if (a == null)
+                        dsplskh.Add(lskh.Ctmbill.Dp.Phong.Sophong, lskh.Ctmbill.Dp.Phong);
+                }
+            }
+        }
         public PhongKS()
         {
             InitializeComponent();
+            getDSPLSKH();
         }
 
         public void hienthi()
@@ -242,19 +264,26 @@ namespace QuanLyKhachSan
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            
             if (frmmng.Data.ArrPKS.Count > 0)
             {
-                frmmng.Data.ArrPKS.RemoveAt(i);
-                i--;
-                if (i < 0 && frmmng.Data.ArrPKS.Count > 0)
+                CPhong a = timSP(frmmng.Data.ArrPKS[i].Sophong);
+                if (a == null)
                 {
-                    i = 0;
+                    frmmng.Data.ArrPKS.RemoveAt(i);
+                    i--;
+                    if (i < 0 && frmmng.Data.ArrPKS.Count > 0)
+                    {
+                        i = 0;
+                    }
+                    if (i >= 0)
+                    {
+                        hienthiPKS(i);
+                    }
+                    hienthi();
                 }
-                if (i >= 0)
-                {
-                    hienthiPKS(i);
-                }
-                hienthi();
+                else
+                    MessageBox.Show("Đã có ở LSKH -> Không thể xóa");
             }
         }
 

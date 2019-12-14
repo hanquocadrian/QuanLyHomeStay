@@ -228,13 +228,13 @@ namespace QuanLyKhachSan
                     {
                         ListViewItem li = lvwInfoKH.Items.Add(ls.Ctmbill.Kh.Hoten);
                         li.SubItems.Add(ls.Ctmbill.Kh.CMND.ToString());
-                        li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.Ngayden.ToShortDateString() : ls.Ctmbill.Ngaythanhtoan.ToShortDateString());
-                        li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.Ngaydi.ToShortDateString() : ls.Ctmbill.Ngaythanhtoan.ToShortDateString());
+                        li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.Ngayden.ToString() : ls.Ctmbill.Ngaythanhtoan.ToString());
+                        li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.Ngaydi.ToString() : ls.Ctmbill.Ngaythanhtoan.ToString());
                         li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.SoNgayO().ToString() : "Ko Đặt Phòng");
                         li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.TongThanhTien().ToString() : "Ko Đặt Phòng");
                         li.SubItems.Add(ls.Ctmbill.Ddv != null ? ls.Ctmbill.Ddv.tinhTongGiaTien().ToString() : "Ko Đặt DV");
                         li.SubItems.Add(ls.Ctmbill.tinhTongThanhTien().ToString());
-                        li.SubItems.Add(ls.Ctmbill.Ngaythanhtoan.ToShortDateString());
+                        li.SubItems.Add(ls.Ctmbill.Ngaythanhtoan.ToString());
                         li.SubItems.Add(ls.Ctmbill.Kh.Quoctich);
                     }
                 }
@@ -254,13 +254,13 @@ namespace QuanLyKhachSan
                                 timthayphong = true;
                                 ListViewItem li = lvwInfoKH.Items.Add(ls.Ctmbill.Kh.Hoten);
                                 li.SubItems.Add(ls.Ctmbill.Kh.CMND.ToString());
-                                li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.Ngayden.ToShortDateString() : ls.Ctmbill.Ngaythanhtoan.ToShortDateString());
-                                li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.Ngaydi.ToShortDateString() : ls.Ctmbill.Ngaythanhtoan.ToShortDateString());
+                                li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.Ngayden.ToString() : ls.Ctmbill.Ngaythanhtoan.ToString());
+                                li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.Ngaydi.ToString() : ls.Ctmbill.Ngaythanhtoan.ToString());
                                 li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.SoNgayO().ToString() : "Ko Đặt Phòng");
                                 li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.TongThanhTien().ToString() : "Ko Đặt Phòng");
                                 li.SubItems.Add(ls.Ctmbill.Ddv != null ? ls.Ctmbill.Ddv.tinhTongGiaTien().ToString() : "Ko Đặt DV");
                                 li.SubItems.Add(ls.Ctmbill.tinhTongThanhTien().ToString());
-                                li.SubItems.Add(ls.Ctmbill.Ngaythanhtoan.ToShortDateString());
+                                li.SubItems.Add(ls.Ctmbill.Ngaythanhtoan.ToString());
                                 li.SubItems.Add(ls.Ctmbill.Kh.Quoctich);
                             }
                         }
@@ -275,13 +275,13 @@ namespace QuanLyKhachSan
                     {
                         ListViewItem li = lvwInfoKH.Items.Add(ls.Ctmbill.Kh.Hoten);
                         li.SubItems.Add(ls.Ctmbill.Kh.CMND.ToString());
-                        li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.Ngayden.ToShortDateString() : ls.Ctmbill.Ngaythanhtoan.ToShortDateString());
-                        li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.Ngaydi.ToShortDateString() : ls.Ctmbill.Ngaythanhtoan.ToShortDateString());
+                        li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.Ngayden.ToString() : ls.Ctmbill.Ngaythanhtoan.ToString());
+                        li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.Ngaydi.ToString() : ls.Ctmbill.Ngaythanhtoan.ToString());
                         li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.SoNgayO().ToString() : "Ko Đặt Phòng");
                         li.SubItems.Add(ls.Ctmbill.Dp != null ? ls.Ctmbill.Dp.TongThanhTien().ToString() : "Ko Đặt Phòng");
                         li.SubItems.Add(ls.Ctmbill.Ddv != null ? ls.Ctmbill.Ddv.tinhTongGiaTien().ToString() : "Ko Đặt DV");
                         li.SubItems.Add(ls.Ctmbill.tinhTongThanhTien().ToString());
-                        li.SubItems.Add(ls.Ctmbill.Ngaythanhtoan.ToShortDateString());
+                        li.SubItems.Add(ls.Ctmbill.Ngaythanhtoan.ToString());
                         li.SubItems.Add(ls.Ctmbill.Kh.Quoctich);
                     }
                 }

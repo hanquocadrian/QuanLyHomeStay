@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,8 +17,9 @@ namespace QuanLyKhachSan
     {
         FormManager frmmng = new FormManager();
         private int i = -1;
-
         int gpdon, gpdoi, gpcc;
+        
+
         public PhongKS()
         {
             InitializeComponent();
